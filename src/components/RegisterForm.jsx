@@ -6,13 +6,11 @@ import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import "../styles/RegisterForm.css"
 
-
 const validationSchema = Yup.object({
     name: Yup.string().required("El nombre es obligatorio"),
     email: Yup.string().email("Email invalido").required('El email es obligatorio'),
     password: Yup.string().required('La contraseña es obligatoria')
 })
-
 
 export default function RegisterForm() {
 
@@ -27,6 +25,7 @@ export default function RegisterForm() {
                     username: values.name,
                     email: values.email,
                     password: values.password,
+                    role: values.role
                 })
             })
 
@@ -46,7 +45,7 @@ export default function RegisterForm() {
         <div className='register-container'>
             <h2>Crear cuenta</h2>
             <Formik
-                initialValues={{ name: '', email: '', password: '', role: 'usuario' }}
+                initialValues={{ name: '', email: '', password: '', role: 'user' }}
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
             >
@@ -67,11 +66,20 @@ export default function RegisterForm() {
                             <Field as={InputText} id='password' name='password' />
                             <ErrorMessage name='password' component='small' className='error' />
                         </div>
+
+                        <div className='form-field'>
+                            <label>Rol</label>
+                            <Field as="select" name="role">
+                                <option value="user">Usuario</option>
+                                <option value="admin">Admin</option>
+                            </Field>
+                            <ErrorMessage name='role' component='small' className='error' />
+                        </div>
+
                         <Button type='submit' label={isSubmitting ? "Registrando..." : 'Registrarse'} />
                     </Form>
                 )}
             </Formik>
         </div>
     )
-
 }
