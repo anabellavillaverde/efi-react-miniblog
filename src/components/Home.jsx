@@ -13,7 +13,7 @@ export default function Home() {
                 <Button
                     label="Iniciar sesión"
                     className="p-button-secondary"
-                    onClick={() => alert("Funcionalidad próximamente")}
+                    onClick={() => navigate("/login")}
                 />
             </div>
         </div>
