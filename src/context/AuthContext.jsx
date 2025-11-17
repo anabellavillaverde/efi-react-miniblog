@@ -6,6 +6,11 @@ export const AuthContext = createContext();
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
+const getUserIdFromDecodedToken = (decoded) => {
+    const id = decoded.id || decoded.sub;
+    return id ? Number(id) : null;
+};
+
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
@@ -16,8 +21,11 @@ export const AuthProvider = ({ children }) => {
             try {
                 const decoded = jwt_decode(storedToken);
                 if (decoded.exp * 1000 > Date.now()) {
-                    setUser(decoded);
-                    setToken(storedToken);
+                    const userId = getUserIdFromDecodedToken(decoded);
+                    if (userId) {
+                        setUser({ ...decoded, id: userId });
+                        setToken(storedToken);
+                    }
                 } else {
                     localStorage.removeItem('token');
                 }
@@ -47,10 +55,11 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('token', jwtToken);
 
             const decoded = jwt_decode(jwtToken);
-            setUser(decoded);
+            
+            const userId = getUserIdFromDecodedToken(decoded);
+            setUser({ ...decoded, id: userId });
             setToken(jwtToken);
 
-            toast.success('Inicio de sesión exitoso');
             return true;
         } catch (error) {
             console.error(error);
