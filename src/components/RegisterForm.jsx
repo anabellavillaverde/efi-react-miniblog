@@ -20,10 +20,14 @@ export default function RegisterForm() {
 
     const handleSubmit = async (values, { resetForm }) => {
         try {
-            const response = await fetch('http://localhost:5000/register', {
+            const response = await fetch('http://localhost:5000/api/register', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(values)
+                body: JSON.stringify({
+                    username: values.name,
+                    email: values.email,
+                    password: values.password,
+                })
             })
 
             if (response.ok) {

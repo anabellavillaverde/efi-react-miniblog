@@ -4,6 +4,8 @@ import { toast } from 'react-toastify'
 
 export const AuthContext = createContext()
 
+const API_BASE_URL = 'http://localhost:5000/api';
+
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [token, setToken] = useState(null)
