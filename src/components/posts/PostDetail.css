@@ -1,0 +1,50 @@
+.post-detail-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 1rem;
+}
+
+.post-detail-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.post-detail-content {
+    margin-top: 1rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.post-detail-meta {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #5a6978;
+}
+
+.comments-toggle-btn {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.reviews-dropdown {
+    margin-top: 1rem;
+    padding: 1rem 1.2rem;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #dce3ec;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    animation: fadeDown 0.25s ease-out;
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+}
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

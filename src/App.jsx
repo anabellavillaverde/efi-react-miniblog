@@ -4,6 +4,7 @@ import RegisterForm from "./components/RegisterForm/RegisterForm";
 import LoginForm from "./components/LoginForm/LoginForm";
 import PostsList from "./components/posts/PostsList";
 import PostsForm from "./components/posts/PostsForm";
+import PostDetail from "./components/posts/PostDetail";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Route path="/login" element={<LoginForm />} />
       <Route path="/posts" element={<PostsList />} />
       <Route path="/posts/crear" element={<PostsForm />} />
+      <Route path="/posts/:id" element={<PostDetail />} />
     </Routes>
   );
 }

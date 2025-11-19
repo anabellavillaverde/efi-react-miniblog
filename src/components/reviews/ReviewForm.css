@@ -1,0 +1,57 @@
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-field label {
+    font-weight: 700;
+    color: #1d3557;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.form-field textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #a0c4ff;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    min-height: 100px; 
+    resize: vertical;
+}
+
+.form-field textarea:focus {
+    border-color: #1d3557;
+    box-shadow: 0 0 0 2px #bde0fe;
+    outline: none;
+}
+
+.review-form .p-button {
+    margin-top: 1rem;
+    background-color: #1d3557 !important;
+    color: white !important;
+    border: none !important;
+    padding: 0.7rem 1.5rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.review-form .p-button:hover {
+    background-color: #334e7a !important;
+}
+
+.error {
+    color: #d32f2f;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+}

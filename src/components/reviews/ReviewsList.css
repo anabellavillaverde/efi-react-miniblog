@@ -1,0 +1,91 @@
+.reviews-list-container {
+    max-width: 900px;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #000000, #eeace3);
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: #f595bd;
+}
+
+.review-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: #111;
+}
+
+.review-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.review-text {
+    font-size: 1rem;
+    color: #222;
+    line-height: 1.5;
+}
+
+.review-meta {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.5rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.7rem;
+    justify-content: flex-end;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    margin-top: 0.8rem;
+}
+
+.review-item:hover .action-buttons {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.action-buttons button.p-button-secondary {
+    background-color: #bde0fe !important;
+    color: #111 !important;
+}
+
+.action-buttons button.p-button-secondary:hover {
+    background-color: #a2cfff !important;
+    transform: translateY(-1px);
+}
+
+.action-buttons button.p-button-danger {
+    background-color: #ffb3c1 !important;
+    color: #111 !important;
+}
+
+.action-buttons button.p-button-danger:hover {
+    background-color: #ff9daf !important;
+    transform: translateY(-1px);
+}
+
+.create-review-btn {
+    background-color: #000000 !important;
+    color: #fafafa !important;
+    padding: 0.6rem 1.5rem !important;
+    border-radius: 10px;
+    border: 1px transparent #ffffff !important;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+    align-self: flex-start;
+    margin-top: 1rem;
+}
+
+.create-review-btn:hover {
+    background-color: #5e1051 !important;
+    transform: translateY(-2px);
+}

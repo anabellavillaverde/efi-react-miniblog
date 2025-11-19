@@ -2,27 +2,27 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
-import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import { Link } from "react-router-dom";
 import PostsForm from "./PostsForm";
-import {
-    fetchPosts,
-    deletePost as deletePostService,
-} from "../../services/postsService";
-import "./PostsList.css";
+import { fetchPosts, deletePost as deletePostService } from "../../services/postsService";
 import { toast } from "react-toastify";
+import "./PostsList.css";
 
 export default function PostsList() {
     const { user, token } = useContext(AuthContext);
-
     const [posts, setPosts] = useState([]);
     const [displayEditDialog, setDisplayEditDialog] = useState(false);
     const [editingPost, setEditingPost] = useState(null);
     const [displayCreateDialog, setDisplayCreateDialog] = useState(false);
 
+    const refreshPosts = async () => {
+        const updated = await fetchPosts();
+        setPosts(updated);
+    };
+
     useEffect(() => {
-        fetchPosts()
-            .then(setPosts)
-            .catch(() => toast.error("Error al cargar posts"));
+        refreshPosts().catch(() => toast.error("Error al cargar posts"));
     }, []);
 
     const handleEdit = (post) => {
@@ -34,12 +34,12 @@ export default function PostsList() {
 
     const confirmDelete = (postId) => {
         confirmDialog({
-            message: '¿Está seguro de eliminar este post?',
-            header: 'Confirmar Eliminación',
-            icon: 'pi pi-exclamation-triangle',
-            acceptLabel: 'Sí',
-            rejectLabel: 'Cancelar',
-            acceptClassName: 'p-button-danger',
+            message: "¿Está seguro de eliminar este post?",
+            header: "Confirmar Eliminación",
+            icon: "pi pi-exclamation-triangle",
+            acceptLabel: "Sí",
+            rejectLabel: "Cancelar",
+            acceptClassName: "p-button-danger",
             accept: async () => {
                 try {
                     await deletePostService(postId, token);
@@ -52,11 +52,6 @@ export default function PostsList() {
         });
     };
 
-    const refreshPosts = async () => {
-        const updated = await fetchPosts();
-        setPosts(updated);
-    };
-
     return (
         <div className="posts-list-container">
             <div className="mini-blog-header">
@@ -65,12 +60,7 @@ export default function PostsList() {
 
             <div className="posts-list-controls">
                 <h2>Posts</h2>
-                <Button
-                    label="Crear Post"
-                    icon="pi pi-plus"
-                    className="create-post-btn"
-                    onClick={handleCreate}
-                />
+                <Button label="Crear Post" icon="pi pi-plus" className="create-post-btn" onClick={handleCreate} />
             </div>
 
             <ConfirmDialog />
@@ -79,25 +69,23 @@ export default function PostsList() {
                 {posts.map((post) => (
                     <div key={post.id} className="post-item">
                         <h3>{post.titulo}</h3>
-                        <p className="post-content">{post.contenido}</p>
+
+                        <p className="post-content">
+                            {post.contenido.slice(0, 120)}...
+                        </p>
+
                         <p className="post-meta">
                             <strong>Autor:</strong> {post.autor_nombre} | <strong>Fecha:</strong> {post.fecha_creacion}
                         </p>
 
+                        <Link to={`/posts/${post.id}`} className="ver-mas-btn">
+                            Ver detalle
+                        </Link>
+
                         {(user?.role === "admin" || user?.id === post.autor_id) && (
                             <div className="action-buttons">
-                                <Button
-                                    label="Editar"
-                                    icon="pi pi-pencil"
-                                    onClick={() => handleEdit(post)}
-                                    className="p-button-secondary"
-                                />
-                                <Button
-                                    label="Eliminar"
-                                    icon="pi pi-trash"
-                                    onClick={() => confirmDelete(post.id)}
-                                    className="p-button-danger"
-                                />
+                                <Button label="Editar" icon="pi pi-pencil" onClick={() => handleEdit(post)} className="p-button-secondary" />
+                                <Button label="Eliminar" icon="pi pi-trash" onClick={() => confirmDelete(post.id)} className="p-button-danger" />
                             </div>
                         )}
                     </div>
@@ -105,14 +93,7 @@ export default function PostsList() {
             </div>
 
             {editingPost && (
-                <Dialog
-                    header={`Editar Post: ${editingPost.titulo}`}
-                    visible={displayEditDialog}
-                    style={{ width: "50vw" }}
-                    onHide={() => setDisplayEditDialog(false)}
-                    modal
-                    closable
-                >
+                <Dialog header={`Editar Post: ${editingPost.titulo}`} visible={displayEditDialog} style={{ width: "50vw" }} onHide={() => setDisplayEditDialog(false)} modal closable>
                     <PostsForm
                         initialValues={editingPost}
                         onClose={() => {
@@ -124,14 +105,7 @@ export default function PostsList() {
             )}
 
             {displayCreateDialog && (
-                <Dialog
-                    header="Crear Nuevo Post"
-                    visible={displayCreateDialog}
-                    style={{ width: "50vw" }}
-                    onHide={() => setDisplayCreateDialog(false)}
-                    modal
-                    closable
-                >
+                <Dialog header="Crear Nuevo Post" visible={displayCreateDialog} style={{ width: "50vw" }} onHide={() => setDisplayCreateDialog(false)} modal closable>
                     <PostsForm
                         onClose={() => {
                             setDisplayCreateDialog(false);

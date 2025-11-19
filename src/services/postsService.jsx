@@ -45,3 +45,14 @@ export async function deletePost(postId, token) {
     if (!res.ok) throw new Error("Error al eliminar post");
     return true;
 }
+
+export async function fetchPostById(id) {
+    try {
+        const res = await fetch(`http://localhost:5000/api/posts/${id}`);
+        if (!res.ok) throw new Error("Error al obtener post por ID");
+        return await res.json();
+    } catch (err) {
+        console.error("fetchPostById error:", err);
+        throw err;
+    }
+}
