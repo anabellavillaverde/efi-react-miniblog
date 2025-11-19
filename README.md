@@ -1,16 +1,73 @@
-# React + Vite
+# MiniBlog React + Flask
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Materia:** Práctica Profesionalizante I – JavaScript  
+**Proyecto:** E.F.I – MiniBlog  
 
-Currently, two official plugins are available:
+## Integrantes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Anabella Villaverde – [GitHub](https://github.com/anabellavillaverde)  
+ 
+## Enlace al Backend
 
-## React Compiler
+[Repositorio Backend Flask](https://github.com/RoyScc/efi-miniblog/tree/dev)  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Funcionalidades
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. Autenticación y Usuarios
+- Registro con campos `name`, `email`, `password` y `rol`.  
+- Inicio de sesión que obtiene un JWT desde la API y lo almacena en `localStorage`.  
+- Decodificación del token para obtener datos del usuario (nombre, email, rol, expiración).  
+- Gestión de sesión mediante `AuthContext`.  
+- Logout que limpia el estado del usuario y el token.  
+
+### 2. CRUDs Principales
+- **Posts:** crear, listar, editar y eliminar publicaciones con título, contenido, autor y fecha.  
+- **Reviews:** crear, listar, editar y eliminar comentarios asociados a un post.  
+- Validaciones básicas en formularios y mensajes de error/éxito mediante Toasts.  
+
+### 3. Seguridad y Roles
+- Rutas privadas protegidas mediante JWT.  
+- Diferenciación de permisos:  
+  - **Admin:** acceso a todas las funcionalidades.  
+  - **User:** puede gestionar solo sus propios posts o comentarios.  
+
+---
+## Pre-requisitos
+- Antes de ejecutar el frontend, asegurate de tener:
+
+1. Backend en funcionamiento
+
+Cloná e iniciá el proyecto Flask (desde el enlace anterior).
+La API generalmente corre en:
+
+```bash
+http://localhost:5000
+```
+2. Node.js instalado
+
+
+## Instalación
+
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/anabellavillaverde/efi-react-miniblog
+cd efi-react-miniblog
+```
+
+### 2. Instalar dependencias
+```
+npm install
+```
+
+### 3. Ejecutar el proyecto
+```
+npm run dev
+```
+**Esto levantara la app en Vite, por defecto en**
+```
+http://localhost:5173
+```
+
+**Abrí esa URL en tu navegador para ver la aplicación funcionando**
