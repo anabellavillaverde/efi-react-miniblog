@@ -14,6 +14,7 @@ const getUserIdFromDecodedToken = (decoded) => {
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
@@ -34,6 +35,7 @@ export const AuthProvider = ({ children }) => {
                 localStorage.removeItem('token');
             }
         }
+        setLoading(false);
     }, []);
 
     const login = async (email, password) => {
@@ -55,7 +57,6 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('token', jwtToken);
 
             const decoded = jwt_decode(jwtToken);
-            
             const userId = getUserIdFromDecodedToken(decoded);
             setUser({ ...decoded, id: userId });
             setToken(jwtToken);
@@ -76,7 +77,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, token, login, logout }}>
+        <AuthContext.Provider value={{ user, token, login, logout, loading }}>
             {children}
         </AuthContext.Provider>
     );

@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f0f0f0;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ddd;
+}
+
+.logo {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-user {
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}

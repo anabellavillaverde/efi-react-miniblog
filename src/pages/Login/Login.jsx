@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import "./LoginForm.css";
+import "./Login.css";
 
 const validationSchema = Yup.object({
     email: Yup.string().email("Email inválido").required("El email es obligatorio"),
