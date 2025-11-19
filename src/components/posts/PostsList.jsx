@@ -81,7 +81,7 @@ export default function PostsList() {
                         <h3>{post.titulo}</h3>
                         <p className="post-content">{post.contenido}</p>
                         <p className="post-meta">
-                            <strong>Autor ID:</strong> {post.autor_id}
+                            <strong>Autor:</strong> {post.autor_nombre} | <strong>Fecha:</strong> {post.fecha_creacion}
                         </p>
 
                         {(user?.role === "admin" || user?.id === post.autor_id) && (
