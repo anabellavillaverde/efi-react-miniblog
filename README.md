@@ -5,11 +5,11 @@
 
 ## Integrantes
 
-- Anabella Villaverde – [GitHub](https://github.com/anabellavillaverde)  
+- [Anabella Villaverde](https://github.com/anabellavillaverde)  
  
 ## Enlace al Backend
 
-[Repositorio Backend Flask](https://github.com/RoyScc/efi-miniblog/tree/dev)  
+[Repositorio Backend Flask](https://github.com/RoyScc/efi-miniblog/tree/fix)
 
 ---
 
