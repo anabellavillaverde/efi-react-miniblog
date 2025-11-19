@@ -3,7 +3,7 @@
   font-family: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #213547;
+  color: #360021;
   background: linear-gradient(135deg, #a0c4ff, #caffbf);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -54,14 +54,14 @@ button {
   font-size: 1em;
   font-weight: 600;
   font-family: inherit;
-  background-color: #1a73e8;
+  background-color: #000000;
   color: white;
   cursor: pointer;
   transition: background-color 0.25s, transform 0.1s ease-in-out;
 }
 
 button:hover {
-  background-color: #1669c1;
+  background-color: #47193d;
   transform: scale(1.03);
 }
 
@@ -73,11 +73,11 @@ button:focus-visible {
 /* ---------- MODO CLARO/OSC. ---------- */
 @media (prefers-color-scheme: dark) {
   :root {
-    color: #f1f1f1;
-    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    color: #44052f;
+    background: linear-gradient(135deg, #000000, #eeace3);
   }
   body {
-    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    background: linear-gradient(135deg, #000000, #eeace3);
   }
   h1 {
     color: #ffffff;

@@ -4,7 +4,7 @@ import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-import "../styles/RegisterForm.css"
+import "./RegisterForm.css"
 
 const validationSchema = Yup.object({
     name: Yup.string().required("El nombre es obligatorio"),

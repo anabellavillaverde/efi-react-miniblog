@@ -4,9 +4,8 @@ import { Button } from "primereact/button";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-import "../styles/LoginForm.css";
-import jwt_decode from "jwt-decode";
+import { AuthContext } from "../../context/AuthContext";
+import "./LoginForm.css";
 
 const validationSchema = Yup.object({
     email: Yup.string().email("Email inválido").required("El email es obligatorio"),

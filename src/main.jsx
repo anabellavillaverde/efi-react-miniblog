@@ -9,7 +9,7 @@ import "./styles.css";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.jsx";
-import { PostsProvider } from "./context/PostsContext.jsx"; // <-- importamos
+import { PostsProvider } from "./context/PostsContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

@@ -1,6 +1,6 @@
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
-import "../styles/Home.css";
+import "./Home.css";
 
 export default function Home() {
     const navigate = useNavigate();

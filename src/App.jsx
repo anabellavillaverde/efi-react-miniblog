@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import RegisterForm from "./components/RegisterForm";
-import LoginForm from "./components/LoginForm";
+import Home from "./components/Home/Home";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
+import LoginForm from "./components/LoginForm/LoginForm";
 import PostsList from "./components/posts/PostsList";
 import PostsForm from "./components/posts/PostsForm";
 
